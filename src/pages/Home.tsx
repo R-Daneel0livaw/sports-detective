@@ -7,13 +7,13 @@ export default function Home() {
       <h1 className="text-4xl font-bold mb-6">🕵️‍♂️ Welcome to Sports Detective</h1>
       <p className="text-lg mb-4">Analyze sports data and solve cases using machine learning models.</p>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>📂 Case Files</CardTitle>
+            <CardTitle>📊 Dashboard</CardTitle>
           </CardHeader>
           <CardContent>
-            Manage your projects and investigations into sports outcomes.
+            Get a quick overview of your investigations, model performance, and latest insights.
             <br />
             <Link to="/dashboard" className="text-blue-500">View Dashboard →</Link>
           </CardContent>
@@ -21,10 +21,23 @@ export default function Home() {
         
         <Card>
           <CardHeader>
+            <CardTitle>📂 Case Files</CardTitle>
+          </CardHeader>
+          <CardContent>
+            Manage your projects and investigations into sports outcomes.
+            <br />
+            <Link to="/casefiles" className="text-blue-500">View Case Files →</Link>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
             <CardTitle>🔍 Forensic Analysis</CardTitle>
           </CardHeader>
           <CardContent>
             Dive deep into historical sports data and uncover trends.
+            <br />
+            <Link to="/forensicanalysis" className="text-blue-500">View Forensics Analysis →</Link>
           </CardContent>
         </Card>
       </div>
