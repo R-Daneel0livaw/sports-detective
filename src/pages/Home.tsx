@@ -74,7 +74,7 @@ const [picks, setPicks] = useState([
                 placeholder="What's your prediction for today's games?"
                 value={newPick}
                 onChange={(e) => setNewPick(e.target.value)}
-                className="border-transparent focus:ring focus:ring-blue-300 rounded-lg outline-none focus-visible:outline-2 focus-visible:ring-0 shadow-none placeholder-gray-500 placeholder:text-lg mb-3"
+                className="border-transparent focus:ring focus:ring-blue-300 rounded-lg outline-none focus-visible:outline-2 focus-visible:ring-0 shadow-none placeholder-gray-400 font-medium placeholder:text-lg resize-none mb-3"
               />
               <Button onClick={handlePostPick} className="w-full">Post Pick</Button>
             </CardContent>
