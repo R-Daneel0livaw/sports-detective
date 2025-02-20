@@ -32,9 +32,7 @@ export default function Marketplace() {
     <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6">🏆 Sports Betting Models</h1>
 
-      {/* Filtering Section */}
       <div className="flex flex-wrap gap-4 mb-6">
-        {/* Sport Filter */}
         <Select onValueChange={setSelectedSport}>
           <SelectTrigger className="w-40">
             <SelectValue placeholder="Filter by Sport" />
@@ -48,7 +46,6 @@ export default function Marketplace() {
           </SelectContent>
         </Select>
 
-        {/* Type Filter */}
         <Select onValueChange={setSelectedType}>
           <SelectTrigger className="w-40">
             <SelectValue placeholder="Filter by Type" />
@@ -62,13 +59,11 @@ export default function Marketplace() {
           </SelectContent>
         </Select>
 
-        {/* Advanced Search Toggle */}
         <Button variant="outline" onClick={() => setShowAdvanced(!showAdvanced)}>
           Advanced Search <ChevronDown className="ml-2 w-4 h-4" />
         </Button>
       </div>
 
-      {/* Advanced Search Section */}
       {showAdvanced && (
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
           <h2 className="text-lg font-semibold mb-3">🔎 Advanced Search</h2>
@@ -82,7 +77,6 @@ export default function Marketplace() {
         </div>
       )}
 
-      {/* Marketplace Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredModels.map((model) => (
           <Card key={model.id} className="hover:shadow-lg transition">
@@ -93,7 +87,6 @@ export default function Marketplace() {
             <CardContent>
               <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">{model.description}</p>
               
-              {/* Buy Button (Opens Dialog) */}
               <Dialog>
                 <DialogTrigger asChild>
                   <Button className="w-full">Buy Model</Button>
