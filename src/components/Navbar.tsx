@@ -5,7 +5,6 @@ import { useState } from "react";
 export default function Navbar() {
   const [selectedSport, setSelectedSport] = useState("Basketball");
 
-  // Mock data for today's games (replace with real data)
   const games = [
     { sport: "Basketball", time: "5:00 PM ET", team1: "LAL", record1: "30-22", team2: "CHA", record2: "20-33" },
     { sport: "Basketball", time: "7:30 PM ET", team1: "BOS", record1: "40-12", team2: "MIA", record2: "32-20" },
@@ -16,9 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="flex items-center justify-between px-6 py-3 bg-gray-900 text-white shadow-md">
-      {/* Left side: Sport Filter + Today's Games */}
       <div className="flex items-center gap-4">
-        {/* Sport Select Dropdown */}
         <Select onValueChange={setSelectedSport}>
           <SelectTrigger className="w-40 bg-gray-800 border border-gray-700 text-white">
             <SelectValue placeholder="Select Sport" />
@@ -29,7 +26,6 @@ export default function Navbar() {
           </SelectContent>
         </Select>
 
-        {/* List of Today's Games */}
         <div className="flex gap-4 overflow-x-auto">
           {filteredGames.map((game, index) => (
             <div key={index} className="bg-gray-800 p-2 rounded-md shadow-md text-sm text-center min-w-[100px]">
@@ -41,7 +37,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Right side: Navigation Links */}
       <div className="flex gap-6">
         <Link to="/" className="hover:text-gray-300">Home</Link>
         <Link to="/dashboard" className="hover:text-gray-300">Dashboard</Link>
