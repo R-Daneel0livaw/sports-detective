@@ -3,12 +3,13 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { useState } from "react";
 
 export default function Navbar() {
-  const [selectedSport, setSelectedSport] = useState("Basketball");
+      const [selectedSport, setSelectedSport] = useState("Basketball");
+  const [hoveredGame, setHoveredGame] = useState<number | null>(null);
 
   const games = [
-    { sport: "Basketball", time: "5:00 PM ET", team1: "LAL", record1: "30-22", team2: "CHA", record2: "20-33" },
-    { sport: "Basketball", time: "7:30 PM ET", team1: "BOS", record1: "40-12", team2: "MIA", record2: "32-20" },
-    { sport: "Baseball", time: "3:00 PM ET", team1: "NYY", record1: "50-30", team2: "BOS", record2: "48-32" },
+    { id: 1, sport: "Basketball", time: "5:00 PM ET", team1: "LAL", record1: "30-22", team2: "CHA", record2: "20-33" },
+    { id: 2, sport: "Basketball", time: "7:30 PM ET", team1: "BOS", record1: "40-12", team2: "MIA", record2: "32-20" },
+    { id: 3, sport: "Baseball", time: "3:00 PM ET", team1: "NYY", record1: "50-30", team2: "BOS", record2: "48-32" },
   ];
 
   const filteredGames = games.filter((game) => game.sport === selectedSport);
@@ -27,11 +28,27 @@ export default function Navbar() {
         </Select>
 
         <div className="flex gap-4 overflow-x-auto">
-          {filteredGames.map((game, index) => (
-            <div key={index} className="bg-gray-800 p-2 rounded-md shadow-md text-sm text-center min-w-[100px]">
-              <p className="font-semibold">{game.time}</p>
-              <p>{game.team1} {game.record1}</p>
-              <p>{game.team2} {game.record2}</p>
+          {filteredGames.map((game) => (
+            <div
+              key={game.id}
+              className="bg-gray-800 p-2 rounded-md shadow-md text-sm text-center min-w-[120px] h-16 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-blue-600"
+              onMouseEnter={() => setHoveredGame(game.id)}
+              onMouseLeave={() => setHoveredGame(null)}
+            >
+              {hoveredGame === game.id ? (
+                <Link
+                  to={`/create-model/${game.id}`}
+                  className="text-white font-semibold"
+                >
+                  Create Model
+                </Link>
+              ) : (
+                <div>
+                  <p className="font-semibold">{game.time}</p>
+                  <p>{game.team1} {game.record1}</p>
+                  <p>{game.team2} {game.record2}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
