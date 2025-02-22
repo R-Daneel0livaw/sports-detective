@@ -37,7 +37,7 @@ export default function Marketplace() {
           <SelectTrigger className="w-40">
             <SelectValue placeholder="Filter by Sport" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className='bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 shadow-md rounded-md'>
             {sports.map((sport) => (
               <SelectItem key={sport} value={sport}>
                 {sport}
@@ -50,7 +50,7 @@ export default function Marketplace() {
           <SelectTrigger className="w-40">
             <SelectValue placeholder="Filter by Type" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className='bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 shadow-md rounded-md'>
             {types.map((type) => (
               <SelectItem key={type} value={type}>
                 {type}
