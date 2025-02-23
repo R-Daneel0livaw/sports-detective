@@ -35,7 +35,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-3xl">
+    <div className="pt-30 container mx-auto p-6 max-w-3xl">
       <h1 className="text-4xl font-bold mb-6">Profile</h1>
 
       <Card>

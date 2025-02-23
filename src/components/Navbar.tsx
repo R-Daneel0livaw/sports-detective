@@ -15,7 +15,7 @@ export default function Navbar() {
   const filteredGames = games.filter((game) => game.sport === selectedSport);
 
   return (
-    <nav className="flex items-center justify-between px-6 py-3 bg-gray-900 text-white shadow-md">
+    <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-3 bg-gray-900 text-white shadow-md">
       <div className="flex items-center gap-4">
         <Select onValueChange={setSelectedSport}>
           <SelectTrigger className="w-40 bg-gray-800 border border-gray-700 text-white">

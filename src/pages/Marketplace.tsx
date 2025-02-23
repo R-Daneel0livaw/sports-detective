@@ -29,7 +29,7 @@ export default function Marketplace() {
   );
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="pt-30 container mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6">🏆 Sports Betting Models</h1>
 
       <div className="flex flex-wrap gap-4 mb-6">
