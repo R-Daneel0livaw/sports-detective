@@ -10,7 +10,7 @@ export default function Profile() {
   const [isPublic, setIsPublic] = useState(true);
   const [favoriteSports, setFavoriteSports] = useState<string[]>([]);
   const [twitterFollowers, setTwitterFollowers] = useState("");
-  const [membership, setMembership] = useState("Detective"); 
+  const [membership, setMembership] = useState("Free"); 
 
   const sportsOptions = ["Basketball", "Football", "Soccer", "Tennis", "Baseball", "Hockey"];
   const membershipOptions = [
