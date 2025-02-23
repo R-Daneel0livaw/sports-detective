@@ -1,17 +1,32 @@
 import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
 
 export default function Profile() {
   const [isPublic, setIsPublic] = useState(true);
   const [favoriteSports, setFavoriteSports] = useState<string[]>([]);
   const [twitterFollowers, setTwitterFollowers] = useState("");
+  const [membership, setMembership] = useState("Detective"); 
 
   const sportsOptions = ["Basketball", "Football", "Soccer", "Tennis", "Baseball", "Hockey"];
+  const membershipOptions = [
+    {
+      level: "Free",
+      benefits: "Basic access to features. Limited model runs. No advanced analytics.",
+    },
+    {
+      level: "Detective",
+      benefits: "Unlocks advanced stats and extra model runs. Some analytics tools.",
+    },
+    {
+      level: "Chief Detective",
+      benefits: "Full access to all features, unlimited model runs, and priority support.",
+    },
+  ];
 
   const toggleSport = (sport: string) => {
     setFavoriteSports((prev) =>
@@ -86,10 +101,33 @@ export default function Profile() {
               className="placeholder-[#8e8e93] text-base p-3 border-none focus:ring-[#1E90FF] focus:ring-2"
             />
           </div>
-
-          <Button className="w-full mt-4">Save Profile</Button>
         </CardContent>
       </Card>
+
+      <Card className="mt-6">
+        <CardHeader>
+          <CardTitle>Membership</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {membershipOptions.map(({ level, benefits }) => (
+              <button
+                key={level}
+                onClick={() => setMembership(level)}
+                className={`p-4 text-center border rounded-lg font-semibold transition-all flex flex-col items-center space-y-2 cursor-pointer
+                  ${membership === level ? "bg-blue-600 text-white border-blue-700 shadow-md" : "bg-gray-800 text-gray-200 hover:bg-gray-700"}`}
+              >
+                <span className="text-lg">{level}</span>
+                <p className="text-xs opacity-75">{benefits}</p>
+              </button>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="mt-6">
+        <Button className="w-full">Save Profile</Button>
+      </div>
     </div>
   );
 }

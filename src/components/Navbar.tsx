@@ -40,7 +40,7 @@ export default function Navbar() {
                   to={`/create-model/${game.id}`}
                   className="text-white font-semibold"
                 >
-                  Create Model
+                  Analyze
                 </Link>
               ) : (
                 <div>
