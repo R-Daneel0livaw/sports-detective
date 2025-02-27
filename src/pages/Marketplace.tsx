@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const models = [
   { id: 1, name: "Total Dominator", description: "Predicts game totals with AI precision.", sport: "Basketball", type: "Totals", owned: false, selling: false },
@@ -18,7 +26,7 @@ const types = ["All", "Totals", "Moneyline", "Over/Under", "Parlays"];
 export default function Marketplace() {
   const [selectedSport, setSelectedSport] = useState("All");
   const [selectedType, setSelectedType] = useState("All");
-  const [selectedTab, setSelectedTab] = useState("available"); 
+  const [selectedTab, setSelectedTab] = useState("available");
 
   const filterModels = () => {
     return models.filter((model) => {
@@ -33,7 +41,7 @@ export default function Marketplace() {
       return matchesTab && matchesSport && matchesType;
     });
   };
-
+  
   type Model = {
     id: number;
     name: string;
@@ -47,9 +55,12 @@ export default function Marketplace() {
   type ModelGridProps = {
     models: Model[];
     buttonLabel: string;
+    category: string;
   };
 
-  function ModelGrid({ models, buttonLabel }: ModelGridProps) {
+  function ModelGrid({ models, buttonLabel, category }: ModelGridProps) {
+    const [selectedModel, setSelectedModel] = useState<Model | null>(null);
+
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {models.length > 0 ? (
@@ -61,7 +72,23 @@ export default function Marketplace() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">{model.description}</p>
-                <Button className="w-full cursor-pointer">{buttonLabel}</Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="w-full cursor-pointer" onClick={() => setSelectedModel(model)}>
+                      {buttonLabel}
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <DialogHeader>
+                      <DialogTitle>{selectedModel?.name}</DialogTitle>
+                      <DialogDescription>
+                        {category === "available" && "This is an available model. You can purchase it here."}
+                        {category === "purchased" && "This is a purchased model. View its details here."}
+                        {category === "selling" && "This is a selling model. Manage your listing here."}
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
               </CardContent>
             </Card>
           ))
@@ -99,14 +126,6 @@ export default function Marketplace() {
         </TabsList>
       </Tabs>
 
-      {/* <Tabs defaultValue="available" onValueChange={setSelectedTab}>
-        <TabsList className="flex space-x-6 bg-gray-900 text-white p-2 rounded-lg mb-6">
-          <TabsTrigger value="available" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700 cursor-pointer">Available Models</TabsTrigger>
-          <TabsTrigger value="purchased" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700 cursor-pointer">Purchased Models</TabsTrigger>
-          <TabsTrigger value="selling" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700 cursor-pointer">Selling Models</TabsTrigger>
-        </TabsList>
-      </Tabs> */}
-
       <div className="flex gap-4 mb-6">
         <Select onValueChange={setSelectedSport}>
           <SelectTrigger className="w-52 bg-white border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
@@ -135,7 +154,7 @@ export default function Marketplace() {
         selectedTab === "available" ? "Buy Model" :
         selectedTab === "purchased" ? "View Details" :
         "Manage Listing"
-      } />
+      } category={selectedTab} />
     </div>
   );
 }
