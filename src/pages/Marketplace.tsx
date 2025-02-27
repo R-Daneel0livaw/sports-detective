@@ -18,9 +18,8 @@ const types = ["All", "Totals", "Moneyline", "Over/Under", "Parlays"];
 export default function Marketplace() {
   const [selectedSport, setSelectedSport] = useState("All");
   const [selectedType, setSelectedType] = useState("All");
-  const [selectedTab, setSelectedTab] = useState("available"); // Track selected tab
+  const [selectedTab, setSelectedTab] = useState("available"); 
 
-  // Filter models based on tab selection and filters
   const filterModels = () => {
     return models.filter((model) => {
       const matchesTab =
@@ -45,7 +44,6 @@ export default function Marketplace() {
     selling: boolean;
   };
 
-
   type ModelGridProps = {
     models: Model[];
     buttonLabel: string;
@@ -63,7 +61,7 @@ export default function Marketplace() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">{model.description}</p>
-                <Button className="w-full">{buttonLabel}</Button>
+                <Button className="w-full cursor-pointer">{buttonLabel}</Button>
               </CardContent>
             </Card>
           ))
@@ -78,16 +76,37 @@ export default function Marketplace() {
     <div className="container mx-auto p-6 pt-30 max-w-5xl">
       <h1 className="text-4xl font-bold mb-6">Sports Betting Models</h1>
 
-      {/* Tabs */}
       <Tabs defaultValue="available" onValueChange={setSelectedTab}>
-        <TabsList className="flex space-x-6 bg-gray-900 text-white p-2 rounded-lg mb-6">
-          <TabsTrigger value="available" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700">Available Models</TabsTrigger>
-          <TabsTrigger value="purchased" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700">Purchased Models</TabsTrigger>
-          <TabsTrigger value="selling" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700">Selling Models</TabsTrigger>
+        <TabsList className="flex space-x-6 bg-white text-black rounded-lg mb-10 mt-4">
+          <TabsTrigger
+            value="available"
+            className="py-2 rounded-lg transition-all hover:bg-gray-300 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+          >
+            Available Models
+          </TabsTrigger>
+          <TabsTrigger
+            value="purchased"
+            className="py-2 rounded-lg transition-all hover:bg-gray-300 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+          >
+            Purchased Models
+          </TabsTrigger>
+          <TabsTrigger
+            value="selling"
+            className="py-2 rounded-lg transition-all hover:bg-gray-300 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+          >
+            Selling Models
+          </TabsTrigger>
         </TabsList>
       </Tabs>
 
-      {/* Filters - Left Aligned */}
+      {/* <Tabs defaultValue="available" onValueChange={setSelectedTab}>
+        <TabsList className="flex space-x-6 bg-gray-900 text-white p-2 rounded-lg mb-6">
+          <TabsTrigger value="available" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700 cursor-pointer">Available Models</TabsTrigger>
+          <TabsTrigger value="purchased" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700 cursor-pointer">Purchased Models</TabsTrigger>
+          <TabsTrigger value="selling" className="px-4 py-2 rounded-lg transition-all hover:bg-gray-700 cursor-pointer">Selling Models</TabsTrigger>
+        </TabsList>
+      </Tabs> */}
+
       <div className="flex gap-4 mb-6">
         <Select onValueChange={setSelectedSport}>
           <SelectTrigger className="w-52 bg-white border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
@@ -112,7 +131,6 @@ export default function Marketplace() {
         </Select>
       </div>
 
-      {/* Models */}
       <ModelGrid models={filterModels()} buttonLabel={
         selectedTab === "available" ? "Buy Model" :
         selectedTab === "purchased" ? "View Details" :
