@@ -20,7 +20,7 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 shadow-md">
       <div className="flex items-center gap-6 px-6 py-2 bg-gray-800 text-white">
         <Select onValueChange={setSelectedSport}>
-          <SelectTrigger className="w-40 bg-gray-700 border border-gray-600 text-white">
+          <SelectTrigger className="w-40 bg-gray-700 border border-gray-600 text-white cursor-pointer">
             <SelectValue placeholder="Select Sport" />
           </SelectTrigger>
           <SelectContent className="bg-gray-700 border border-gray-600 text-white">

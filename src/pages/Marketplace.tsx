@@ -128,7 +128,7 @@ export default function Marketplace() {
 
       <div className="flex gap-4 mb-6">
         <Select onValueChange={setSelectedSport}>
-          <SelectTrigger className="w-52 bg-white border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
+          <SelectTrigger className="w-52 bg-white border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 cursor-pointer">
             <SelectValue placeholder="Filter by Sport" />
           </SelectTrigger>
           <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 shadow-lg rounded-md">
@@ -139,7 +139,7 @@ export default function Marketplace() {
         </Select>
 
         <Select onValueChange={setSelectedType}>
-          <SelectTrigger className="w-52 bg-white border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
+          <SelectTrigger className="w-52 bg-white border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 cursor-pointer">
             <SelectValue placeholder="Filter by Type" />
           </SelectTrigger>
           <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 shadow-lg rounded-md">
