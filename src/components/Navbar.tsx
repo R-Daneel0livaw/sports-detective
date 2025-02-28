@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { useState } from "react";
 
+
 export default function Navbar() {
+  const location = useLocation(); 
   const [selectedSport, setSelectedSport] = useState("Basketball");
   const [hoveredGame, setHoveredGame] = useState<number | null>(null);
 
@@ -16,7 +18,8 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 shadow-md">
-      <div className="flex items-center gap-6 px-6 py-2 pt-3 bg-gray-800 text-white">
+      {/* Top Section */}
+      <div className="flex items-center gap-6 px-6 py-2 bg-gray-800 text-white">
         <Select onValueChange={setSelectedSport}>
           <SelectTrigger className="w-40 bg-gray-700 border border-gray-600 text-white">
             <SelectValue placeholder="Select Sport" />
@@ -56,10 +59,10 @@ export default function Navbar() {
 
       <div className="flex justify-end items-center px-6 py-3 bg-gray-900 text-white">
         <div className="flex gap-6">
-          <Link to="/" className="hover:text-gray-300">Home</Link>
-          <Link to="/dashboard" className="hover:text-gray-300">Dashboard</Link>
-          <Link to="/marketplace" className="hover:text-gray-300">Marketplace</Link>
-          <Link to="/profile" className="hover:text-gray-300">Profile</Link>
+          <Link to="/" className={`hover:text-gray-300 ${location.pathname === "/" ? "text-gray-400" : ""}`}>Home</Link>
+          <Link to="/dashboard" className={`hover:text-gray-300 ${location.pathname === "/dashboard" ? "text-gray-400" : ""}`}>Dashboard</Link>
+          <Link to="/marketplace" className={`hover:text-gray-300 ${location.pathname === "/marketplace" ? "text-gray-400" : ""}`}>Marketplace</Link>
+          <Link to="/profile" className={`hover:text-gray-300 ${location.pathname === "/profile" ? "text-gray-400" : ""}`}>Profile</Link>
         </div>
       </div>
     </nav>
