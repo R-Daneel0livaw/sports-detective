@@ -100,26 +100,26 @@ export default function Marketplace() {
   }
 
   return (
-    <div className="container mx-auto p-6 pt-30 max-w-5xl">
+    <div className="container mx-auto p-6 pt-40 max-w-5xl">
       <h1 className="text-4xl font-bold mb-6">Sports Betting Models</h1>
 
       <Tabs defaultValue="available" onValueChange={setSelectedTab}>
         <TabsList className="flex space-x-6 bg-white text-black rounded-lg mb-10 mt-4">
           <TabsTrigger
             value="available"
-            className="py-2 rounded-lg transition-all hover:bg-gray-300 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+            className="py-2 rounded-lg transition-all hover:bg-gray-200 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
           >
             Available Models
           </TabsTrigger>
           <TabsTrigger
             value="purchased"
-            className="py-2 rounded-lg transition-all hover:bg-gray-300 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+            className="py-2 rounded-lg transition-all hover:bg-gray-200 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
           >
             Purchased Models
           </TabsTrigger>
           <TabsTrigger
             value="selling"
-            className="py-2 rounded-lg transition-all hover:bg-gray-300 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+            className="py-2 rounded-lg transition-all hover:bg-gray-200 cursor-pointer data-[state=active]:bg-blue-600 data-[state=active]:text-white"
           >
             Selling Models
           </TabsTrigger>
@@ -133,7 +133,7 @@ export default function Marketplace() {
           </SelectTrigger>
           <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 shadow-lg rounded-md">
             {sports.map((sport) => (
-              <SelectItem key={sport} value={sport}>{sport}</SelectItem>
+              <SelectItem key={sport} value={sport} className='hover:bg-gray-200'>{sport}</SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -144,7 +144,7 @@ export default function Marketplace() {
           </SelectTrigger>
           <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 shadow-lg rounded-md">
             {types.map((type) => (
-              <SelectItem key={type} value={type}>{type}</SelectItem>
+              <SelectItem key={type} value={type} className='hover:bg-gray-200'>{type}</SelectItem>
             ))}
           </SelectContent>
         </Select>

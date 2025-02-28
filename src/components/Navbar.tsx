@@ -3,7 +3,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { useState } from "react";
 
 export default function Navbar() {
-      const [selectedSport, setSelectedSport] = useState("Basketball");
+  const [selectedSport, setSelectedSport] = useState("Basketball");
   const [hoveredGame, setHoveredGame] = useState<number | null>(null);
 
   const games = [
@@ -15,15 +15,15 @@ export default function Navbar() {
   const filteredGames = games.filter((game) => game.sport === selectedSport);
 
   return (
-    <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-3 bg-gray-900 text-white shadow-md">
-      <div className="flex items-center gap-4">
+    <nav className="fixed top-0 w-full z-50 shadow-md">
+      <div className="flex items-center gap-6 px-6 py-2 pt-3 bg-gray-800 text-white">
         <Select onValueChange={setSelectedSport}>
-          <SelectTrigger className="w-40 bg-gray-800 border border-gray-700 text-white">
+          <SelectTrigger className="w-40 bg-gray-700 border border-gray-600 text-white">
             <SelectValue placeholder="Select Sport" />
           </SelectTrigger>
-          <SelectContent className="bg-gray-800 border border-gray-700 text-white">
-            <SelectItem value="Basketball">🏀 Basketball</SelectItem>
-            <SelectItem value="Baseball">⚾ Baseball</SelectItem>
+          <SelectContent className="bg-gray-700 border border-gray-600 text-white">
+            <SelectItem value="Basketball" className="hover:bg-gray-600">🏀 Basketball</SelectItem>
+            <SelectItem value="Baseball" className="hover:bg-gray-600">⚾ Baseball</SelectItem>
           </SelectContent>
         </Select>
 
@@ -31,7 +31,7 @@ export default function Navbar() {
           {filteredGames.map((game) => (
             <div
               key={game.id}
-              className="bg-gray-800 p-2 rounded-md shadow-md text-sm text-center min-w-[120px] h-16 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-blue-600"
+              className="bg-gray-700 p-2 rounded-md shadow-md text-sm text-center min-w-[120px] h-16 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-blue-600"
               onMouseEnter={() => setHoveredGame(game.id)}
               onMouseLeave={() => setHoveredGame(null)}
             >
@@ -54,13 +54,14 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="flex gap-6">
-        <Link to="/" className="hover:text-gray-300">Home</Link>
-        <Link to="/dashboard" className="hover:text-gray-300">Dashboard</Link>
-        <Link to="/marketplace" className="hover:text-gray-300">Marketplace</Link>
-        <Link to="/profile" className="hover:text-gray-300">Profile</Link>
+      <div className="flex justify-end items-center px-6 py-3 bg-gray-900 text-white">
+        <div className="flex gap-6">
+          <Link to="/" className="hover:text-gray-300">Home</Link>
+          <Link to="/dashboard" className="hover:text-gray-300">Dashboard</Link>
+          <Link to="/marketplace" className="hover:text-gray-300">Marketplace</Link>
+          <Link to="/profile" className="hover:text-gray-300">Profile</Link>
+        </div>
       </div>
     </nav>
   );
 }
-

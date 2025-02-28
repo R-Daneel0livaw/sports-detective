@@ -19,7 +19,7 @@ const [picks, setPicks] = useState([
   };
 
   return (
-    <div className="pt-30 container mx-auto p-4">
+    <div className="pt-40 container mx-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <aside className="md:col-span-1 hidden md:block sticky top-24 h-fit p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow self-start">
           <h1 className="text-3xl font-bold mb-3">🕵️‍♂️ Sports Detective</h1>
