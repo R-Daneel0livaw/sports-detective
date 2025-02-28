@@ -18,7 +18,6 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 shadow-md">
-      {/* Top Section */}
       <div className="flex items-center gap-6 px-6 py-2 bg-gray-800 text-white">
         <Select onValueChange={setSelectedSport}>
           <SelectTrigger className="w-40 bg-gray-700 border border-gray-600 text-white">
