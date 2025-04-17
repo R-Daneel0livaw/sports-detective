@@ -34,8 +34,8 @@ export default function Navbar() {
             <div
               key={game.id}
               className="bg-gray-700 p-2 rounded-md shadow-md text-sm text-center min-w-[120px] h-16 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-blue-600"
-              onMouseEnter={() => setHoveredGame(game.id)}
-              onMouseLeave={() => setHoveredGame(null)}
+              onMouseOver={() => setHoveredGame(game.id)}
+              onMouseOut={() => setHoveredGame(null)}
             >
               {hoveredGame === game.id ? (
                 <Link
